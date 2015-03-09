@@ -6,7 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/social/signup/">Sign up</a> <br>
-<a href="/social/login/">Login</a> <br>
+<p> hello  ${it.uname}  </p>
 </body>
 </html>
