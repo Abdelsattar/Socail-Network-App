@@ -25,7 +25,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.FCI.SWE.ServicesModels.MessagEntity;
 import com.FCI.SWE.ServicesModels.UserEntity;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
 
 /**
  * This class contains REST services, also contains action function for web
@@ -62,7 +64,25 @@ public class UserServices {
 		object.put("Status", "OK");
 		return object.toString();
 	}
+	@POST
+	@Path("/showfriends")
+	public String shower(){
+		JSONObject object = new JSONObject();
+		Map<String,ArrayList>map=new HashMap<String,ArrayList>();
+		ArrayList<UserEntity> user = UserEntity.listOfFriend();
+		JSONArray arr=new JSONArray();
+		
+		for(UserEntity users:user){
+			object.put("FNAME",users.getName());
+			
+			arr.put(object);
+		}
+		
+		
+		
+	  return arr.toString();
 
+	}
 	/**
 	 * Login Rest Service, this service will be called to make login process
 	 * also will check user data and returns new user from datastore
@@ -74,6 +94,7 @@ public class UserServices {
 	@Path("/LoginService")
 	public String loginService(@FormParam("uname") String uname,
 			@FormParam("password") String pass) {
+		System.out.println(uname+" "+pass);
 		JSONObject object = new JSONObject();
 		UserEntity user = UserEntity.getUser(uname, pass);
 		if (user == null) {
@@ -94,9 +115,11 @@ public class UserServices {
 	 * and return userName if exist or null if not exist
 	 * jason format =D
 	 * */
+
 	@POST
 	@Path("/search") //hya de li hynfzha mn l usercontrol
 	public String Search( @FormParam("friendName") String fname , @FormParam("userName") String uname){
+		
 		JSONObject object=new JSONObject();
 		UserEntity user=new UserEntity();
 		user.get(fname);
@@ -112,7 +135,13 @@ public class UserServices {
 		return object.toString();
 		
 	}
-	
+	/*
+	 * @param fname Friend name 
+	 * @param uname User name
+	 * his function to accept friend request take it param from controller
+	 * 
+	 * 
+	 */
 	@POST
 	@Path("/addfriend")
 	public String Accept( @FormParam("friendName") String fname , @FormParam("userName") String uname){
@@ -125,11 +154,36 @@ public class UserServices {
 		else
 		{
 			object.put("Status", "Accpted ");
-			UserEntity.addFriend(uname, fname);
+		//	UserEntity.addFriend(uname, fname);
 		}
 		return object.toString();
 		
 	}
-	
+	/*
+	 * @param sender send message
+	 * @param reciver who recive message 
+	 * @param text message containt
+	 * 
+	 */
+	@POST
+	@Path("/sending")
+	public String sendMessageService(@FormParam("sender") String sender,
+			@FormParam("receiver") String receiver,@FormParam("text") String text) {
+		JSONObject object = new JSONObject();
+ 
+		/*to check the reciver is exist */
+		UserEntity user = UserEntity.getUserByMail(receiver); 
+		if(user == null ){
+			object.put("Status", "Not Found");  
+			return object.toString();
+		}	 
+		else{ 
+			    MessagEntity msg = new MessagEntity(sender,receiver,text);
+				object.put("Status", "OK");  
+				msg.saveMsg();
+		}
+ 
+		return object.toString();
+	}
 
 }

@@ -8,16 +8,26 @@
 <body>
 <p> Welcome b2a ya ${it.name} </p>
 
+
 <p> This is should be user home page </p>
-<p> Current implemented services "http://fci-swe-apps.appspot.com/rest/RegistrationService --- {requires: uname, email, password}" </p>
-<p> and "http://fci-swe-apps.appspot.com/rest/LoginService --- {requires: uname,  password}" </p>
-<p> you should implement sendFriendRequest service and addFriend service
 
 <form action="/social/doSearch" method="post"> 
 <input type="hidden" name="userName" value="${it.name}" >
 <p>Enter user name</p>
 <input type="text" name="friendName" /> 
 <input type="submit" value="Search" />
+
+</form>
+<p>Requests Notifications Here</p>
+<form action="/social/showURFR" method="post"> 
+<input type="submit" value="See" />
+</form>
+
+</form>
+
+<p>Message here</p>
+<form action="jsp/Message" > 
+<input type="submit" value="Write" />
 
 </form>
 

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -21,9 +22,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.server.mvc.Viewable;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.mortbay.util.ajax.JSON;
 
 import com.FCI.SWE.Models.User;
 import com.FCI.SWE.ServicesModels.UserEntity;
@@ -117,7 +120,7 @@ public class UserController {
 	public String response(@FormParam("uname") String uname,
 			@FormParam("email") String email, @FormParam("password") String pass) {
 
-		String serviceUrl = "http://localhost:8888//rest/RegistrationService";
+		String serviceUrl = "http://localhost:8888/rest/RegistrationService";
 		String urlParameters = "uname=" + uname + "&email=" + email
 				+ "&password=" + pass;
 		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
@@ -159,10 +162,16 @@ public class UserController {
 	@Produces("text/html")
 	public Response home(@FormParam("uname") String uname,
 			@FormParam("password") String pass) {
-		String urlParameters = "uname=" + uname + "&password=" + pass;
 
+		if(pass.equals("") || uname.equals(""))
+		{
+			return null ;	
+		}
+		String urlParameters = "uname=" + uname + "&password=" + pass;
 		String retJson = Connection.connect(
-				"http://localhost:8888//rest/LoginService", urlParameters,
+				"http://localhost:8888/rest/LoginService"
+				//"http://localhost:8888/rest/LoginService"
+				, urlParameters,
 				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
 
 		JSONParser parser = new JSONParser();
@@ -181,6 +190,7 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 
 		/*
 		 * UserEntity user = new UserEntity(uname, email, pass);
@@ -189,14 +199,77 @@ public class UserController {
 		return null;
 
 	}
+	
+	/**
+	 * Action function to response to login request. This function will act as a
+	 * controller part, it will calls login service to check user data and get
+	 * user from datastore
+	 * 
+	 * @param 
+	 *            take user name and return whos send to him friend request 
+	 * @return  page view his pending friends
+	 */
+	
+	
+	
+	
+	@POST
+	@Path("/showURFR")
+	@Produces("text/html")
+	public Response show() {
+		String retJson = Connection.connect(
+				"http://localhost:8888/rest/showfriends"
+				//"http://localhost:8888/rest/LoginService"
+				, "",
+				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
+		JSONParser parser = new JSONParser();
+		Object obj;
+		HashMap<String,ArrayList<User>>listof=new HashMap<String,ArrayList<User>>();
+		ArrayList<User>users=new ArrayList<User>();
+		try {
+			JSONArray arr=(JSONArray) parser.parse(retJson);
+			obj = parser.parse(retJson);
+			JSONObject object = (JSONObject) obj;
+			
+		for(int i=0;i<arr.size();i++){
+			
+			object=(JSONObject) arr.get(i);
+			users.add(User.parsInfo(object.toJSONString()));
+		
+		}
+		listof.put("usersList",users);
+			
+			
+			return Response.ok(new Viewable("/jsp/UrRe", listof)).build();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+
+		/*
+		 * UserEntity user = new UserEntity(uname, email, pass);
+		 * user.saveUser(); return uname;
+		 */
+		return null;
+
+	}
+	/**
+	 * Action function to response to accept friend request
+	 * user from datastore
+	 * 
+	 * @param user 
+	 *            take user name and return whos send to him friend request 
+	 * @return  page view his pending friends
+	 */
 
 	//
-	@POST
+	/*@POST
 	@Path("/addfriend")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addFriend(@FormParam("friendName") String FName, @FormParam("userName") String UName) {
 
-		String serviceUrl = "http://localhost:8888//rest/addfriend";
+		String serviceUrl = "http://localhost:8888/rest/addfriend";
 		String urlParameters = "friendName=" + FName + "&userName=" + UName;
 		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
 				"application/x-www-form-urlencoded;charset=UTF-8");
@@ -215,7 +288,63 @@ public class UserController {
 		}
 
 		return "Failed";
+	}*/
+	
+	/**
+	 * Action function to response to 
+	 * send message to friends 
+	 * user from datastore
+	 * 
+	 * @param sender
+	 *            provided user name
+	 * @param reciver
+	 *            provided user will recive message
+	 *  @param text
+	 *            user message          
+	 * @return page
+	 */
+	
+	@POST
+	@Path("/sendMessgae")
+	@Produces("text/html")
+	public String sendFriendRequest(@FormParam("sender") String sender,
+			@FormParam("receiver") String receiver,@FormParam("text") String text) {
+ 
+		String serviceUrl = "http://localhost:8888/rest/sending";
+		String urlParameters = "sender=" + sender + "&receiver=" +receiver + "&text=" +text;
+		String retJson = Connection.connect( serviceUrl, urlParameters, "POST",
+				"application/x-www-form-urlencoded;charset=UTF-8");
+		try {
+ 
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(retJson);
+			JSONObject object = (JSONObject) obj; 
+			if (object.get("Status").equals("OK"))
+				return "Message Sent Successfully";
+			else  
+				return "User not found";
+ 
+ 
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return null;
+ 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

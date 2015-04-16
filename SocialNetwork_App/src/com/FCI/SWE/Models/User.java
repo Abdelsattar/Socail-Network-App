@@ -30,6 +30,10 @@ public class User {
 
 	}
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private void setId(long id){
 		this.id = id;
 	}
@@ -37,7 +41,10 @@ public class User {
 	public long getId(){
 		return id;
 	}
-
+   
+	public void setName(String name) {
+		this.name=name;
+	}
 	public String getName() {
 		return name;
 	}
@@ -53,6 +60,7 @@ public class User {
 	public static User getCurrentActiveUser(){
 		return currentActiveUser;
 	}
+	
 	
 	/**
 	 * 
@@ -80,5 +88,21 @@ public class User {
 
 	}
 
+	public static User parsInfo(String json) {
+
+		JSONParser parser = new JSONParser();
+		try {
+			JSONObject object = (JSONObject) parser.parse(json);
+			User user=new User();
+			user.setName(object.get("FName").toString());
+			return user;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
 
 }
