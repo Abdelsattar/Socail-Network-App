@@ -7,8 +7,8 @@
 </head>
 <body>
   
-  <c:forEach items = "${it.usersList}" var="user" >
-			    	<c:out value="${user.name}"/> added you as a friend
+  <c:forEach items = "${it.map}" var="req" >
+			    	<c:out value="${it.user}"/> added you as a friend
 			    		
 				        </c:forEach>	
  </form>

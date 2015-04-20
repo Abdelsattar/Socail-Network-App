@@ -138,9 +138,7 @@ public class UserServices {
 	/*
 	 * @param fname Friend name 
 	 * @param uname User name
-	 * his function to accept friend request take it param from controller
-	 * 
-	 * 
+	 * his function to accept friend request take it param from controller 
 	 */
 	@POST
 	@Path("/addfriend")
