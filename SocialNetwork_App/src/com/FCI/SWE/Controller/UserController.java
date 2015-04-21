@@ -30,6 +30,7 @@ import org.mortbay.util.ajax.JSON;
 
 import com.FCI.SWE.Models.User;
 import com.FCI.SWE.ServicesModels.UserEntity;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
 
 /**
  * This class contains REST services, also contains action function for web
@@ -43,6 +44,10 @@ import com.FCI.SWE.ServicesModels.UserEntity;
 @Path("/")
 @Produces("text/html")
 public class UserController {
+	public static String username;
+	public String UserName=UserController.username;
+
+
 	/**
 	 * Action function to render Signup page, this function will be executed
 	 * using url like this /rest/signup
@@ -68,7 +73,30 @@ public class UserController {
 	public Response signUp() {
 		return Response.ok(new Viewable("/jsp/register") ).build();
 	}
+	
+	@GET	
+	@Path("/CreatePage")
+	public Response CreatePage() {
+		//System.out.println("username "+username);
 
+		return Response.ok(new Viewable("/jsp/CreatePage") ).build();
+	}
+	
+	@GET	
+	@Path("/CreatePages")
+	public Response CreatePages() {
+		//System.out.println("username "+username);
+
+		return Response.ok(new Viewable("/jsp/CreatePages") ).build();
+	}
+	@GET
+	@Path("/likepage")
+	public Response likepage() {
+		//System.out.println("username "+username);
+
+		return Response.ok(new Viewable("/jsp/likepage") ).build();
+	}
+	
 	
 	@GET
 	@Path("/search")
@@ -145,6 +173,89 @@ public class UserController {
 		 */
 		return "Failed";
 	}
+	
+	@POST
+	@Path("/CreatePages")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String response(@FormParam("PageName") String PageName
+			) throws org.json.simple.parser.ParseException, JSONException, ParseException {
+
+		String serviceUrl = "http://localhost:8888//rest/CreateSuccesfully";
+		String urlParameters = "&PageName=" + PageName +"&UserName=" + UserName 
+				;
+		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
+				"application/x-www-form-urlencoded;charset=UTF-8");
+		JSONParser parser = new JSONParser();
+		Object obj;
+		// System.out.println(retJson);
+		obj = parser.parse(retJson);
+		JSONObject object = (JSONObject) obj;
+		Map<String, String> map = new HashMap<String, String>();
+		if (object.get("Status").equals("OK")){
+			
+			return "Created";
+	
+		}
+		return "Failed";
+		
+	}
+	
+	
+//////////////////////////	/****************/////////////////
+	@POST
+	@Path("/Write")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String post(@FormParam("PageName") String PageName,
+			@FormParam("YourPost") String YourPost
+			) throws org.json.simple.parser.ParseException, JSONException, ParseException {
+
+		String serviceUrl = "http://localhost:8888//rest/PostSuccesfully";
+		String urlParameters = "&PageName=" + PageName +"&YourPost=" + YourPost 
+				;
+		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
+				"application/x-www-form-urlencoded;charset=UTF-8");
+		JSONParser parser = new JSONParser();
+		Object obj;
+		// System.out.println(retJson);
+		obj = parser.parse(retJson);
+		JSONObject object = (JSONObject) obj;
+		Map<String, String> map = new HashMap<String, String>();
+		if (object.get("Status").equals("OK")){
+			
+			return "Writed";
+	
+		}
+		return "Failed";
+		
+	}
+	
+	@POST
+	@Path("/Likepage")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String Like(@FormParam("PageName") String PageName
+			) throws org.json.simple.parser.ParseException, JSONException, ParseException {
+
+		String serviceUrl = "http://localhost:8888//rest/Liked";
+		String urlParameters = "PageName=" + PageName +"&UserName=" + UserName 
+				;
+		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
+				"application/x-www-form-urlencoded;charset=UTF-8");
+		JSONParser parser = new JSONParser();
+		Object obj;
+		// System.out.println(retJson);
+		obj = parser.parse(retJson);
+		JSONObject object = (JSONObject) obj;
+		Map<String, String> map = new HashMap<String, String>();
+		if (object.get("Status").equals("OK")){
+			
+			return "Liked";
+	
+		}
+		return "Failed";
+		
+	}
+
+	
 
 	/**
 	 * Action function to response to login request. This function will act as a
@@ -214,18 +325,18 @@ public class UserController {
 	
 	
 	@POST
-	@Path("/showURFR")
+	@Path("/TimeLine")
 	@Produces("text/html")
-	public Response show() {
+	public Response timeLine() {
 		String retJson = Connection.connect(
-				"http://localhost:8888/rest/showfriends"
+				"http://localhost:8888/rest/showTimeLine"
 				//"http://localhost:8888/rest/LoginService"
 				, "",
 				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
 		JSONParser parser = new JSONParser();
 		Object obj;
 		HashMap<String,ArrayList<User>>listof=new HashMap<String,ArrayList<User>>();
-		ArrayList<User>users=new ArrayList<User>();
+		ArrayList<User>Posts=new ArrayList<User>();
 		try {
 			JSONArray arr=(JSONArray) parser.parse(retJson);
 			obj = parser.parse(retJson);
@@ -234,13 +345,13 @@ public class UserController {
 		for(int i=0;i<arr.size();i++){
 			
 			object=(JSONObject) arr.get(i);
-			users.add(User.parsInfo(object.toJSONString()));
+			Posts.add(User.parsInfo(object.toJSONString()));
 		
 		}
-		listof.put("usersList",users);
+		listof.put("Posts",Posts);
 			
 			
-			return Response.ok(new Viewable("/jsp/UrRe", listof)).build();
+			return Response.ok(new Viewable("/jsp/TimeLine", listof)).build();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -339,7 +450,47 @@ public class UserController {
 	
 	
 	
+	@POST
+	@Path("/showURFR")
+	@Produces("text/html")
+	public Response show() {
+		String retJson = Connection.connect(
+				"http://localhost:8888/rest/showfriends"
+				//"http://localhost:8888/rest/LoginService"
+				, "",
+				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
+		JSONParser parser = new JSONParser();
+		Object obj;
+		HashMap<String,ArrayList<User>>listof=new HashMap<String,ArrayList<User>>();
+		ArrayList<User>users=new ArrayList<User>();
+		try {
+			JSONArray arr=(JSONArray) parser.parse(retJson);
+			obj = parser.parse(retJson);
+			JSONObject object = (JSONObject) obj;
+			
+		for(int i=0;i<arr.size();i++){
+			
+			object=(JSONObject) arr.get(i);
+			users.add(User.parsInfo(object.toJSONString()));
+		
+		}
+		listof.put("usersList",users);
+			
+			
+			return Response.ok(new Viewable("/jsp/UrRe", listof)).build();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
+
+		/*
+		 * UserEntity user = new UserEntity(uname, email, pass);
+		 * user.saveUser(); return uname;
+		 */
+		return null;
+
+	}
 	
 	
 	

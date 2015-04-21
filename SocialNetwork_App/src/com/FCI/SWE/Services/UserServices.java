@@ -25,9 +25,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.FCI.SWE.Controller.UserController;
+import com.FCI.SWE.ServicesModels.LikePageEntity;
 import com.FCI.SWE.ServicesModels.MessagEntity;
+import com.FCI.SWE.ServicesModels.PageEntity;
+import com.FCI.SWE.ServicesModels.PagePostEntity;
+import com.FCI.SWE.ServicesModels.PostEntity;
 import com.FCI.SWE.ServicesModels.UserEntity;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
 
 /**
  * This class contains REST services, also contains action function for web
@@ -64,6 +70,7 @@ public class UserServices {
 		object.put("Status", "OK");
 		return object.toString();
 	}
+	
 	@POST
 	@Path("/showfriends")
 	public String shower(){
@@ -183,5 +190,60 @@ public class UserServices {
  
 		return object.toString();
 	}
+	@POST
+	@Path("//showTimeLine")
+	public String showtimeline(@FormParam("user_ID") int ID){
+		JSONObject object = new JSONObject();
+		Map<String,ArrayList>map=new HashMap<String,ArrayList>();
+		ArrayList<UserEntity> Post = PostEntity.listOfPosts(ID);
+		JSONArray arr=new JSONArray();
+		
+		for(UserEntity users:Post){
+			object.put("post",Post.get(ID));
+			
+			arr.put(object);
+		}
+	  return arr.toString();
 
+	}
+	
+	@POST
+	@Path("/Liked")
+	public String LikePage(@FormParam("PageName") String Page
+			) {
+		
+		LikePageEntity user=new LikePageEntity(Page,r);
+		user.Like(Page);
+		JSONObject object = new JSONObject();
+		object.put("Status", "OK");
+		return object.toString();
+	}
+	
+	
+	public String r=UserController.username; 
+	@POST
+	@Path("/CreateSuccesfully")
+	public String messageService(@FormParam("PageName") String PageName
+			) throws JSONException {
+	
+		PageEntity page = new PageEntity(PageName, r);
+		page.CreatePage();
+		JSONObject object = new JSONObject();
+		object.put("Status", "OK");
+		return object.toString();
+		
+	}
+	@POST
+	@Path("/PostSuccesfully")
+	public String Post(@FormParam("PageName") String PageName,
+			@FormParam("YourPost") String PostPage
+			) throws JSONException {
+	
+		PagePostEntity page = new PagePostEntity(PageName, PostPage);
+		page.WritePost();
+		JSONObject object = new JSONObject();
+		object.put("Status", "OK");
+		return object.toString();
+		
+	}
 }

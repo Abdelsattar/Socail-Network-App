@@ -39,7 +39,7 @@ public class PostController {
 		
 		String serviceUrl = "http://localhost:8888/rest/CreatePostService";
 		String urlParameters = "user_ID=" + User.getCurrentActiveUser().getId()
-				+ "&post=" + post + "&/*privacy=" + privacy + "&Feeling=" + Feeling ;
+				+ "&post=" + post + "&privacy=" + privacy + "&Feeling=" + Feeling ;
 		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
 				"application/x-www-form-urlencoded;charset=UTF-8");
 		JSONParser parser = new JSONParser();

@@ -12,7 +12,6 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 
 public class HashtagEntity {
-	private static long Post_ID;
 	private static String Hashtag;
 	private static int Occerance;
 	private static long Hashtag_ID;
@@ -21,8 +20,8 @@ public class HashtagEntity {
 		return Hashtag;
 	}
 	
-	public long getPost_ID(){
-		return Post_ID;
+	public long getHashtag_ID(){
+		return Hashtag_ID;
 	}
 	
 	public int getOccerance(){
@@ -37,38 +36,41 @@ public class HashtagEntity {
 		this.Occerance = Occerance;
 	}
 	
-	public Boolean saveHashtag() {
+	public void setHashtag_ID(long Hashtag_ID){
+		this.Hashtag_ID=Hashtag_ID;
+	}
+	
+	
+	public Boolean saveHashtag(String hash) {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Query gaeQuery = new Query("Hashtag");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
 
-		Entity Hashtag = new Entity("Hashtag", list.size() + 3);
-
-		Hashtag.setProperty("Hashtag", this.Hashtag);
-		Hashtag.setProperty("Post_ID",this.Post_ID);
-		Hashtag.setProperty("Occerance",1);
+//		 here we want to do 2 tables 
+//		 table contain Hashtage and num Hashtag_ID and number of occurence
+//		 table contain Hashtag_ID and Post_ID 
 		
-		boolean check = UpdateHashtag();
-		if(!check){
-			if(datastore.put(Hashtag).isComplete())
+		Entity Hashtag_stat = new Entity("Hashtag", list.size() + 3);
+        long num=UpdateHashtag(hash);
+		Hashtag_stat.setProperty("Hashtag",hash);
+		Hashtag_stat.setProperty("Hashtag_ID",getID());
+		Hashtag_stat.setProperty("Occerance",num);
+					
+		if(datastore.put(Hashtag_stat).isComplete())
 				return true;
 			else return false;
-		}
-		return true;
-
 	}
 	
-	
-	public static String get(String name) {
+	public static String get(long Hashtag_ID) {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Query gaeQuery = new Query("Hashtag");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("Post_ID").toString().equals(Post_ID)) {
-				String returnedUser = new String(entity.getProperty("Post_ID")
+			if (entity.getProperty("Hashtag_ID").toString().equals(Hashtag_ID)) {
+				String returnedUser = new String(entity.getProperty("Hashtag_ID")
 						.toString());
 				return returnedUser;
 			}
@@ -91,7 +93,6 @@ public class HashtagEntity {
 		try {
 			Entity employee = new Entity("Hashtag", list.size() + 4);
 
-			employee.setProperty("Post_ID", Post_ID);
 			employee.setProperty("Hashtag", Hashtag);
 			employee.setProperty("Occerance", Occerance);
 
@@ -129,34 +130,36 @@ public class HashtagEntity {
 	}
 
 	
-	
-	public boolean UpdateHashtag(){
+	public long UpdateHashtag(String hash){
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Query gaeQuery = new Query("Hashtag");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("Hashtag_ID").toString().equals(Hashtag_ID)) {
-				long ID = (long)entity.getProperty("Occerance");
-				 ID++;
-				 entity.setProperty("Occerance",ID);
-				 // here we want to update the Occerance by a quewry
-				 /*
-				 if(datastore.put(Hashtag).isComplete())
-						return true;
-					else return false;
-					*/
+			if (entity.getProperty("Hashtag").toString().equals(hash)) {
+				long Occerance = (long)entity.getProperty("Occerance");
+				Occerance++;
+				 return Occerance;
 			}
 		}
 
-		return false;
+		return 1;
 	}
 	
 	
-	
-	
-	
+	public long getID(){
+		DatastoreService datastore = DatastoreServiceFactory
+				.getDatastoreService();
+		Query gaeQuery = new Query("Hashtag");
+		PreparedQuery pq = datastore.prepare(gaeQuery);
+		long ID=0;
+		for (Entity entity : pq.asIterable()) {
+				ID = (long)entity.getProperty("Hashtag_ID");
+			}
+		 return ++ID;
+
+	}	
 	
 	
 	

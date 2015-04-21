@@ -11,70 +11,47 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 
-public class PostEntity {
-	private static long user_ID;
-	private static long post_ID;
-	private String post;
-	private String privacy;
-	private String Feeling;
+public class ConnectHashtagAndPost {
+	private long Post_ID;
+	private static long Hashtag_ID;
+	private long Connect_ID;
 	
-	public long getPost_ID(){
-		return post_ID;
+	public long getHashtag_ID(){
+		return Hashtag_ID;
 	}
 	
-	public long getUser_ID(){
-		return user_ID;
+	public void setHashtag_ID(long Hashtag_ID){
+		this.Hashtag_ID=Hashtag_ID;
 	}
-	
-	public String getPost(){
-		return post;
-	}
-	
-	public String getPrivacy(){
-		return privacy;
-	}
-	
-	public String getFeeling(){
-		return Feeling;
-	}
-	
 
+	public long getPost_ID(){
+		return Post_ID;
+	}
 	
 	public void setPost_ID(long Post_ID){
-		this.post_ID = Post_ID;
+		this.Post_ID = Post_ID;
 	}
 	
-	public void setUser_ID(long user_ID){
-		this.user_ID = user_ID;
+	public long getConnect_ID(){
+		return Connect_ID;
 	}
 	
-	public void setPost(String post){
-		this.post = post;
+	public void setConnect_ID(long Connect_ID){
+		this.Connect_ID = Connect_ID;
 	}
 	
-	public void setPrivacy(String privacy){
-		this.privacy = privacy;
-	}
-	
-	public void setFeeling(String Feeling){
-		this.Feeling=Feeling;
-	}
-	
-	public Boolean savePost() {
+	public Boolean saveAll() {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
-		Query gaeQuery = new Query("Posts");
+		Query gaeQuery = new Query("ConnectHashtagAndPost");
+		
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
+		Entity post = new Entity("ConnectHashtagAndPost", list.size() + 5);
 
-		Entity post = new Entity("posts", list.size() +7);
-
-		post.setProperty("user_ID", this.user_ID);
-		post.setProperty("post", this.post);
-		post.setProperty("privacy", this.privacy);
-		post.setProperty("Feeling", this.Feeling);
-		post.setProperty("Post_ID", this.post_ID);
-		 
+		//post.setProperty("name", this.name);
+		post.setProperty("Hashtag_ID", this.Hashtag_ID);
+		post.setProperty("Post_ID", this.Post_ID);
 		
 		if(datastore.put(post).isComplete())
 			return true;
@@ -83,14 +60,14 @@ public class PostEntity {
 	}
 	
 	
-	public static String get(String name) {
+	public static String get(long Connect_ID){
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
-		Query gaeQuery = new Query("post");
+		Query gaeQuery = new Query("ConnectHashtagAndPost");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("post_ID").toString().equals(post_ID)) {
-				String returnedUser = new String(entity.getProperty("post_ID")
+			if (entity.getProperty("Connect_ID").toString().equals(Connect_ID)) {
+				String returnedUser = new String(entity.getProperty("Connect_ID")
 						.toString());
 				return returnedUser;
 			}
@@ -100,24 +77,23 @@ public class PostEntity {
 	}
 	
 	
-	public static Boolean postView(String name, String post) {
+	public static Boolean postView(long Post_ID, long Hashtag_ID) {
 
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
-		Query gaeQuery = new Query("post");
+		Query gaeQuery = new Query("ConnectHashtagAndPost");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
 		System.out.println("Size = " + list.size());
 
 		try {
-			Entity employee = new Entity("requests", list.size() + 7);
+			Entity employee = new Entity("ConnectHashtagAndPost", list.size() + 5);
 
-	
-			employee.setProperty("post", post);
+			employee.setProperty("Post_ID", Post_ID);
+			employee.setProperty("Hashtag_ID", Hashtag_ID);
+			employee.setProperty("ConnectHashtagAndPost", "Done");
 
-			employee.setProperty("Post", "true");
-			datastore.put(employee).isComplete();
 			System.out.println(datastore.put(employee).isComplete());
 			txn.commit();
 		} finally {
@@ -129,22 +105,38 @@ public class PostEntity {
 
 	}
 
-	public static ArrayList<UserEntity> listOfPosts(long post_ID) {
+	public static ArrayList<PostEntity> listOfPost() {
 
-		ArrayList<UserEntity> list = new ArrayList<UserEntity>();
+		ArrayList<PostEntity> list = new ArrayList<PostEntity>();
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
 		Query gaeQuery = new Query("post");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("post_ID").toString().equals(post_ID)) {
+			if (entity.getProperty("post").toString().equals("post")
+					&& entity.getProperty("post").toString()
+							.equals("true")) {
 				
-				UserEntity user=new  UserEntity(entity.getProperty("post").toString());
+				PostEntity user=new PostEntity();
 				list.add(user);
 			}
 		}
 		return list;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

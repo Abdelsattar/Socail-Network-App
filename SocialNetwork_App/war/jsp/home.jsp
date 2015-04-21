@@ -23,6 +23,13 @@
 
 </form>
 
+<p>click</p>
+<form action="/social/TimeLine" method="post"> 
+<input type="submit" value="urPosts" />
+
+</form>
+
+
 <br>
 <br>
 <br>
@@ -35,10 +42,8 @@
   				<option value = "Happy">Happy</option>
   				<option value = "Sad">Sad</option>
   				<option value = "Confused">Confused</option>
-  				<option value = "lonly">lonely</option>
-  				<option value = "Exasted">Exhasted</option>
-  				<option value = "LOL">LOL</option>
-  				<option value = "Confused">Confused</option></del>
+  				<option value = "lonely">lonely</option>
+  				
   			</select>
   
   
@@ -50,6 +55,14 @@
   <input type="submit" value="Post">
   
   </form>
+  
+  <pre>
+<a href="/social/CreatePage/">CreatePage</a> <br>
+
+<h1><a href="/social/CreatePages/">Write a post in by my page</a> <br></h1>
+<h1><a href="/social/likepage/">choose page to like</a> <br></h1>
+</pre>
+
 
 </body>
 </html>
