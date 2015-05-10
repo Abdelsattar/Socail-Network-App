@@ -1,13 +1,11 @@
-package com.FCI.SWE.ServicesModelsTests;
-import junit.framework.Assert;
+package com.FCI.SWE.ServicesModels;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
-import com.FCI.SWE.ServicesModels.PageEntity;
-
 public class PagePostEntityTest {
-	PageEntity PP;
+	private static final String Assert = null;
+	PagePostEntity PP= new PagePostEntity();
 	
   @Test(dataProvider = "dp")
   public void f(Integer n, String s) {
@@ -20,11 +18,12 @@ public class PagePostEntityTest {
       new Object[] { 2, "b" },
     };
   }
-  /*
 
   @Test
   public void PagePostEntityStringString() {
-	  Assert.assertEquals(PP.PagePostEntity(PageName, Postpage));
+		 boolean result = PP.PagePostEntity("yadiElNela", "PostGamil");
+
+	  Assert.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
@@ -36,7 +35,9 @@ public class PagePostEntityTest {
 
   @Test
   public void PagePostEntityString() {
-	  Assert.assertEquals(PP.PagePostEntity(Postpage));
+		 boolean result = PP.PagePostEntity("PostGamil");
+
+	  Assert.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
@@ -63,8 +64,8 @@ public class PagePostEntityTest {
 
   @Test
   public void setId() {
-	  Assert.assertEquals(PP.setId(id));
+	  //Assert.assertEquals(PP.setId(id));
 
-    //throw new RuntimeException("Test not implemented");
-  }*/
+    throw new RuntimeException("Test not implemented");
+  }
 }

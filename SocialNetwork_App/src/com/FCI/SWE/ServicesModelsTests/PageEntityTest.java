@@ -1,10 +1,11 @@
-package com.FCI.SWE.ServicesModelsTests;
+package com.FCI.SWE.ServicesModels;
+
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
 public class PageEntityTest {
-	/*
-	PageEntity P;
+	private static final String Assert = null;
+	PageEntity P= new PageEntity();
 	
   @Test(dataProvider = "dp")
   public void f(Integer n, String s) {
@@ -25,7 +26,9 @@ public class PageEntityTest {
 
   @Test
   public void PageEntityStringString() {
-	  Assert.assertEquals(P.PageEntity(PageName, UserName));
+		 boolean result = P.ageEntity("ArafFCI", "Mai");
+
+	  Assert.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
@@ -75,5 +78,4 @@ public class PageEntityTest {
 
    // throw new RuntimeException("Test not implemented");
   }
-  */
 }

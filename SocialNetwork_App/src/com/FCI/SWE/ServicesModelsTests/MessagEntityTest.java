@@ -1,4 +1,4 @@
-package com.FCI.SWE.ServicesModelsTests;
+package com.FCI.SWE.ServicesModels;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
@@ -6,8 +6,8 @@ import org.testng.annotations.DataProvider;
 import com.google.appengine.api.search.query.QueryParser.term_return;
 
 public class MessagEntityTest {
-	/*
-	MessagEntity M;
+	private static final String Assert = null;
+	MessagEntity M= new MessagEntity();
 	
   @Test(dataProvider = "dp")
   public void f(Integer n, String s) {
@@ -23,7 +23,9 @@ public class MessagEntityTest {
 
   @Test
   public void MessagEntity() {
-	  Assert.assertEquals(M.MessagEntity(sender, receiver, text));
+		 boolean result = M.MessagEntity("Mai", "Bor3i", "Blabla");
+
+	  Assert.assertEquals(true, result);
     //throw new RuntimeException("Test not implemented");
   }
 
@@ -54,26 +56,25 @@ public class MessagEntityTest {
 
   @Test
   public void setId() {
-	  Assert.assertEquals(M.setId(id));
-    //throw new RuntimeException("Test not implemented");
+	  //Assert.assertEquals(M.setId(id));
+    throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setReceiver() {
-	  Assert.assertEquals(M.setText(receiver));
-    //throw new RuntimeException("Test not implemented");
+	  //Assert.assertEquals(M.setText(receiver));
+    throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setSender() {
-	  Assert.assertEquals(M.setText(sender));
-	  //throw new RuntimeException("Test not implemented");
+	  //Assert.assertEquals(M.setText(sender));
+	  throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setText() {
-	  Assert.assertEquals(M.setText(text));
-	  //throw new RuntimeException("Test not implemented");
+	 // Assert.assertEquals(M.setText(text));
+	  throw new RuntimeException("Test not implemented");
   }
-  */
 }

@@ -1,11 +1,20 @@
 package com.FCI.SWE.ServicesModelsTests;
 
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import com.FCI.SWE.ServicesModels.LikePageEntity;
+
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
 public class LikePageEntityTest {
-	/*
-	LikePageEntity L;
+	
+	LikePageEntity L = new LikePageEntity();
 	
   @Test(dataProvider = "dp")
   public void f(Integer n, String s) {
@@ -21,7 +30,9 @@ public class LikePageEntityTest {
 
   @Test
   public void Like() {
-	  Assert.assertEquals(true ,L.Like(LikePage, UserName));
+		 boolean result = L.Like("Hala");
+
+	  AssertJUnit.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
@@ -33,29 +44,31 @@ public class LikePageEntityTest {
 
   @Test
   public void LikePageEntityStringString() {
-	  Assert.assertEquals(L.LikePageEntity(LikePage, UserName));
+	  L = new LikePageEntity("Btngan", "Mai");
+	  
+	  boolean result = L
+
+	  AssertJUnit.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void LikePageEntity() {
-	  Assert.assertEquals(L.LikePageEntity(LikePage, UserName));
-   // throw new RuntimeException("Test not implemented");
+	  //Assert.assertEquals(true, result);
+    throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void LikePageEntityString() {
-	  Assert.assertEquals(L.LikePageEntity(LikePage));
+	  boolean result = L.LikePageEntity("Like");
+
+	  AssertJUnit.assertEquals(true, result);
 	  //throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void UserName() {
-	  // how mafesh set fa ht3mley set UserName masln fe  LikePageEntity 
-	  // we tendhy 3leha hena like 
-	   L.setUserName("Mido");
-	  Assert.assertEquals("Mido" L.UserName());
     throw new RuntimeException("Test not implemented");
   }
 
@@ -66,7 +79,8 @@ public class LikePageEntityTest {
 
   @Test
   public void setId() {
-	  Assert.assertEquals(L.setId(id));
-	  //throw new RuntimeException("Test not implemented");
-  }*/
+	  //AssertJUnit.assertEquals(L.setId(id));
+	  throw new RuntimeException("Test not implemented");
+  }
+	
 }

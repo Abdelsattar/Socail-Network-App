@@ -1,4 +1,6 @@
-package com.FCI.SWE.ServicesModelsTests;
+package com.FCI.SWE.ServicesModels;
+
+import junit.framework.Assert;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
@@ -6,8 +8,9 @@ import org.testng.annotations.DataProvider;
 import com.FCI.SWE.ServicesModels.PostEntity;
 
 public class PostEntityTest {
-	PostEntity PE;
-	/*
+	//private static final String Assert = null;
+	PostEntity PE= new PostEntity();
+	
   @Test(dataProvider = "dp")
   public void f(Integer n, String s) {
   }
@@ -22,7 +25,8 @@ public class PostEntityTest {
 
   @Test
   public void get() {
-	  Assert.assertEquals(PE.get(name));
+	  String result = PE.get("Mai");
+	  Assert.assertEquals(true, result);
 
     throw new RuntimeException("Test not implemented");
   }
@@ -54,14 +58,16 @@ public class PostEntityTest {
 
   @Test
   public void listOfPosts() {
-	  Assert.assertEquals(PE.listOfPosts(post_ID));
+		 boolean result = PE.listOfPosts("18");
+		 Assert.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void postView() {
-	  Assert.assertEquals(PE.postView(name, post));
+		 boolean result = PE.postView("Mai", "Mmmmm");
+		 Assert.assertEquals(true, result);
 
     //throw new RuntimeException("Test not implemented");
   }
@@ -73,37 +79,36 @@ public class PostEntityTest {
 
   @Test
   public void setFeeling() {
-	  Assert.assertEquals(PE.setFeeling(Feeling));
+	  //Assert.assertEquals(PE.setFeeling(Feeling));
 
-    //throw new RuntimeException("Test not implemented");
+    throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setPost() {
-	  Assert.assertEquals(PE.setPost(post));
+	  //Assert.assertEquals(PE.setPost(post));
 
-    //throw new RuntimeException("Test not implemented");
+    throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setPost_ID() {
-	  Assert.assertEquals(PE.setPost_ID(Post_ID));
+	  //Assert.assertEquals(PE.setPost_ID(Post_ID));
 
-//    throw new RuntimeException("Test not implemented");
+ throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setPrivacy() {
-	  Assert.assertEquals(PE.setPrivacy(privacy));
+	  //Assert.assertEquals(PE.setPrivacy(privacy));
 
-//    throw new RuntimeException("Test not implemented");
+   throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void setUser_ID() {
-	  Assert.assertEquals(PE.setUser_ID(user_ID));
+	  //Assert.assertEquals(PE.setUser_ID(user_ID));
 
-    //throw new RuntimeException("Test not implemented");
+    throw new RuntimeException("Test not implemented");
   }
-  */
 }
