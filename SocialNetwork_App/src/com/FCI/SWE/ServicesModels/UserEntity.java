@@ -60,12 +60,13 @@ public class UserEntity {
 		this.email = email;
 		this.password = password;
 	}
-	public UserEntity(String name) {
+	
+    public UserEntity(String name) {
 		this.name = name;
 	
 	}
 
-	private void setId(long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -174,9 +175,6 @@ public class UserEntity {
 		return null;
 	}
 
-	
-	
-	
 	public static Boolean sendfriendrequest(String UName, String FName) {
 
 		DatastoreService datastore = DatastoreServiceFactory
@@ -246,6 +244,7 @@ public class UserEntity {
 		return false;
 
 	}
+	
 	public static UserEntity getUserByMail(String email) {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();

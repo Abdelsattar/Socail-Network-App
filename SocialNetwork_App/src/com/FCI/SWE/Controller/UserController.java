@@ -36,8 +36,8 @@ import com.google.appengine.labs.repackaged.org.json.JSONException;
  * This class contains REST services, also contains action function for web
  * application
  * 
- * @author Mohamed Samir
- * @version 1.0
+ * @author Mohammed Abd EL-Sattar Ahmed 
+ * @version 4.0
  * @since 2014-02-12
  *
  */
@@ -96,8 +96,7 @@ public class UserController {
 
 		return Response.ok(new Viewable("/jsp/likepage") ).build();
 	}
-	
-	
+		
 	@GET
 	@Path("/search")
 	public Response search(){
@@ -199,9 +198,8 @@ public class UserController {
 		return "Failed";
 		
 	}
-	
-	
-//////////////////////////	/****************/////////////////
+		
+///////////////////////////****************/////////////////
 	@POST
 	@Path("/Write")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -220,8 +218,7 @@ public class UserController {
 		obj = parser.parse(retJson);
 		JSONObject object = (JSONObject) obj;
 		Map<String, String> map = new HashMap<String, String>();
-		if (object.get("Status").equals("OK")){
-			
+		if (object.get("Status").equals("OK")){			
 			return "Writed";
 	
 		}
@@ -254,9 +251,6 @@ public class UserController {
 		return "Failed";
 		
 	}
-
-	
-
 	/**
 	 * Action function to response to login request. This function will act as a
 	 * controller part, it will calls login service to check user data and get
@@ -320,9 +314,6 @@ public class UserController {
 	 *            take user name and return whos send to him friend request 
 	 * @return  page view his pending friends
 	 */
-	
-	
-	
 	
 	@POST
 	@Path("/TimeLine")
@@ -443,12 +434,6 @@ public class UserController {
 		return null;
  
 	}
-	
-	
-	
-	
-	
-	
 	
 	@POST
 	@Path("/showURFR")

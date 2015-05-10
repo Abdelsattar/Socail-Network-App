@@ -3,10 +3,17 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance-repackaged-2.4.0-b06.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-1.0-sdk-1.9.17.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-labs-1.9.17.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-labs.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-stubs-1.9.17.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-endpoints-deps.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-endpoints.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-jsr107cache-1.9.17.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-tools-sdk-1.9.17.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/asm-4.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/asm-debug-all-5.0.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/datanucleus-api-jdo-3.1.3.jar"/>
@@ -40,5 +47,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/osgi-resource-locator-1.0.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/persistence-api-1.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/validation-api-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Abd El-Sattar/Downloads/appengine-testing-1.9.17.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

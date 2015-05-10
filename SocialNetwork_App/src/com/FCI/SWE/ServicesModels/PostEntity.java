@@ -67,13 +67,13 @@ public class PostEntity {
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
 
-		Entity post = new Entity("posts", list.size() +7);
+		Entity post = new Entity("Posts", list.size() +1);
 
 		post.setProperty("user_ID", this.user_ID);
 		post.setProperty("post", this.post);
 		post.setProperty("privacy", this.privacy);
 		post.setProperty("Feeling", this.Feeling);
-		post.setProperty("Post_ID", this.post_ID);
+		post.setProperty("Post_ID", getLastID());
 		 
 		
 		if(datastore.put(post).isComplete())
@@ -82,15 +82,28 @@ public class PostEntity {
 
 	}
 	
+	public static long getLastID(){
+		DatastoreService datastore = DatastoreServiceFactory
+				.getDatastoreService();
+		Query gaeQuery = new Query("posts");
+		PreparedQuery pq = datastore.prepare(gaeQuery);
+		long ID=-1;
+		for (Entity entity : pq.asIterable()) {
+			ID= (long)entity.getProperty("Post_ID");
+			
+		}
+		return ++ID;
+	
+	}
 	
 	public static String get(String name) {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
-		Query gaeQuery = new Query("post");
+		Query gaeQuery = new Query("posts");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("post_ID").toString().equals(post_ID)) {
-				String returnedUser = new String(entity.getProperty("post_ID")
+			if (entity.getProperty("Post_ID").toString().equals(post_ID)) {
+				String returnedUser = new String(entity.getProperty("Post_ID")
 						.toString());
 				return returnedUser;
 			}
@@ -105,7 +118,7 @@ public class PostEntity {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
-		Query gaeQuery = new Query("post");
+		Query gaeQuery = new Query("posts");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
 		System.out.println("Size = " + list.size());
@@ -114,7 +127,7 @@ public class PostEntity {
 			Entity employee = new Entity("requests", list.size() + 7);
 
 	
-			employee.setProperty("post", post);
+			employee.setProperty("posts", post);
 
 			employee.setProperty("Post", "true");
 			datastore.put(employee).isComplete();
@@ -135,10 +148,10 @@ public class PostEntity {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
-		Query gaeQuery = new Query("post");
+		Query gaeQuery = new Query("posts");
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("post_ID").toString().equals(post_ID)) {
+			if (entity.getProperty("Post_ID").toString().equals(post_ID)) {
 				
 				UserEntity user=new  UserEntity(entity.getProperty("post").toString());
 				list.add(user);

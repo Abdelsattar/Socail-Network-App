@@ -38,6 +38,13 @@ public class MessagEntity {
 	private String receiver;
 	private long id;
 	private String text;
+	public void setId(long id){
+		this.id = id;
+	}
+	public long getID(){
+		return id;
+	}
+	
  
 	public MessagEntity(String sender,String receiver,String text) {
 		// TODO Auto-generated constructor stub
@@ -46,6 +53,7 @@ public class MessagEntity {
 		this.receiver = receiver;
 		this.text = text;
 	}
+	
 		public void saveMsg(){
 		DatastoreService datastore = DatastoreServiceFactory .getDatastoreService();
 		Query gaeQuery = new Query("messages");
@@ -68,10 +76,5 @@ public class MessagEntity {
  
  
 	}
-	public void setId(long id){
-		this.id = id;
-	}
-	public long getID(){
-		return id;
-	}
+
 	}

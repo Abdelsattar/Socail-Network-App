@@ -57,4 +57,29 @@ public class PostController {
 
 		return null;
 	}
+	
+	@POST
+	@Path("/GetHashtag")
+	public String getHashtag() {
+		
+		String serviceUrl = "http://localhost:8888/rest/CreatePostService";
+		String urlParameters = "user_ID=" + User.getCurrentActiveUser().getId();
+		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
+				"application/x-www-form-urlencoded;charset=UTF-8");
+		JSONParser parser = new JSONParser();
+		Object obj;
+ 		try {
+			obj = parser.parse(retJson);
+			JSONObject object = (JSONObject) obj;
+			if (object.get("Status").equals("OK"))
+				return "Post has been posted Successfully";
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
 }

@@ -1,6 +1,8 @@
 package com.FCI.SWE.ServicesModels;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -24,8 +26,8 @@ public class HashtagEntity {
 		return Hashtag_ID;
 	}
 	
-	public int getOccerance(){
-		return Occerance;
+	public Integer getOccerance(){
+		return (Integer)Occerance;
 	}
 	
 	public void setHashtag(String Hashtag){
@@ -119,16 +121,27 @@ public class HashtagEntity {
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		for (Entity entity : pq.asIterable()) {
 			if (entity.getProperty("Hashtag").toString().equals("Hashtag")
-					&& entity.getProperty("Hashtag").toString()
-							.equals("true")) {
+					&& entity.getProperty("Hashtag").toString().equals("true")) {
 				
-				HashtagEntity user=new HashtagEntity();
-				list.add(user);
+				HashtagEntity hash=new HashtagEntity();
+				list.add(hash);
 			}
 		}
 		return list;
 	}
-
+	
+	public static ArrayList<HashtagEntity> trendHashtags(){
+		ArrayList<HashtagEntity> hashTags = listOfHashtag();
+		ArrayList<HashtagEntity> topTrends = new ArrayList<HashtagEntity>();
+		
+	Collections.sort(hashTags, new Comparator<HashtagEntity>(){
+	           public int compare (HashtagEntity h1, HashtagEntity h2){
+	               return h1.getOccerance().compareTo(h2.getOccerance());
+	           }
+	       });		
+		return topTrends;
+	}
+ 
 	
 	public long UpdateHashtag(String hash){
 		DatastoreService datastore = DatastoreServiceFactory

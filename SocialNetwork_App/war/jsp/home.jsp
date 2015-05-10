@@ -63,6 +63,10 @@
 <h1><a href="/social/likepage/">choose page to like</a> <br></h1>
 </pre>
 
+<form action="/social/GetHashtag" method="post"> 
+<input type="submit" value="Get Trend Hashtag" />
+
+</form>
 
 </body>
 </html>

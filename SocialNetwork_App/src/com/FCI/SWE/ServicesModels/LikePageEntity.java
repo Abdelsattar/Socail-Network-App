@@ -46,8 +46,6 @@ public class LikePageEntity {
 		return UserName;
 	}
 
-	
-
 	public String LikePage() {
 		return LikePage;
 	}
