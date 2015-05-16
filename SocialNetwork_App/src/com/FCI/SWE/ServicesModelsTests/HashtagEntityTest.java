@@ -2,19 +2,19 @@ package com.FCI.SWE.ServicesModelsTests;
 
 import java.util.ArrayList;
 
-import junit.framework.Assert;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
+
+
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
 
+import com.FCI.SWE.ServicesModels.HashtagEntity;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import com.FCI.SWE.ServicesModels.HashtagEntity;
 
 public class HashtagEntityTest {
 
@@ -52,7 +52,7 @@ public class HashtagEntityTest {
 
 
   @Test
-  public void UpdateHashtag(String ID) {
+  public void UpdateHashtag() {
 	  long lol =Hash.UpdateHashtag("12");
 	  Assert.assertEquals(3, lol);
   }

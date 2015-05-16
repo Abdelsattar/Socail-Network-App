@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/4/1</td>
+<td>Tests passed/Failed/Skipped:</td><td>3/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sun May 10 12:49:14 EEST 2015</td>
+<td>Started on:</td><td>Sat May 16 14:40:11 EEST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (578 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (218 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,214 +75,14 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.HashtagView()'><b>HashtagView</b><br>Test class: com.FCI.SWE.ServicesModelsTests.HashtagEntityTest</td>
-<td><div><pre>java.lang.NullPointerException: No API environment is registered for this thread.
-	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppId(DatastoreApiHelper.java:117)
-	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppIdNamespace(DatastoreApiHelper.java:133)
-	at com.google.appengine.api.datastore.DatastoreServiceConfig.getAppIdNamespace(DatastoreServiceConfig.java:380)
-	at com.google.appengine.api.datastore.BaseAsyncDatastoreServiceImpl.createTransaction(BaseAsyncDatastoreServiceImpl.java:420)
-	at com.google.appengine.api.datastore.BaseAsyncDatastoreServiceImpl.beginTransaction(BaseAsyncDatastoreServiceImpl.java:412)
-	at com.google.appengine.api.datastore.BaseAsyncDatastoreServiceImpl.beginTransaction(BaseAsyncDatastoreServiceImpl.java:407)
-	at com.google.appengine.api.datastore.DatastoreServiceImpl.beginTransaction(DatastoreServiceImpl.java:126)
-	at com.FCI.SWE.ServicesModels.HashtagEntity.HashtagView(HashtagEntity.java:89)
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.HashtagView(HashtagEntityTest.java:35)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1144817340", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1144817340'><pre>java.lang.NullPointerException: No API environment is registered for this thread.
-	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppId(DatastoreApiHelper.java:117)
-	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppIdNamespace(DatastoreApiHelper.java:133)
-	at com.google.appengine.api.datastore.DatastoreServiceConfig.getAppIdNamespace(DatastoreServiceConfig.java:380)
-	at com.google.appengine.api.datastore.BaseAsyncDatastoreServiceImpl.createTransaction(BaseAsyncDatastoreServiceImpl.java:420)
-	at com.google.appengine.api.datastore.BaseAsyncDatastoreServiceImpl.beginTransaction(BaseAsyncDatastoreServiceImpl.java:412)
-	at com.google.appengine.api.datastore.BaseAsyncDatastoreServiceImpl.beginTransaction(BaseAsyncDatastoreServiceImpl.java:407)
-	at com.google.appengine.api.datastore.DatastoreServiceImpl.beginTransaction(DatastoreServiceImpl.java:126)
-	at com.FCI.SWE.ServicesModels.HashtagEntity.HashtagView(HashtagEntity.java:89)
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.HashtagView(HashtagEntityTest.java:35)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div></td>
-<td>0</td>
-<td>com.FCI.SWE.ServicesModelsTests.HashtagEntityTest@79d0569b</td></tr>
-<tr>
-<td title='com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.fail()'><b>fail</b><br>Test class: com.FCI.SWE.ServicesModelsTests.HashtagEntityTest</td>
-<td><div><pre>junit.framework.AssertionFailedError: expected:&lt;12&gt; but was:&lt;14&gt;
-	at junit.framework.Assert.fail(Assert.java:57)
-	at junit.framework.Assert.failNotEquals(Assert.java:329)
-	at junit.framework.Assert.assertEquals(Assert.java:78)
-	at junit.framework.Assert.assertEquals(Assert.java:234)
-	at junit.framework.Assert.assertEquals(Assert.java:241)
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.fail(HashtagEntityTest.java:68)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace14881896", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace14881896'><pre>junit.framework.AssertionFailedError: expected:&lt;12&gt; but was:&lt;14&gt;
-	at junit.framework.Assert.fail(Assert.java:57)
-	at junit.framework.Assert.failNotEquals(Assert.java:329)
-	at junit.framework.Assert.assertEquals(Assert.java:78)
-	at junit.framework.Assert.assertEquals(Assert.java:234)
-	at junit.framework.Assert.assertEquals(Assert.java:241)
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.fail(HashtagEntityTest.java:68)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div></td>
-<td>0</td>
-<td>com.FCI.SWE.ServicesModelsTests.HashtagEntityTest@79d0569b</td></tr>
-<tr>
-<td title='com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.listOfHashtag()'><b>listOfHashtag</b><br>Test class: com.FCI.SWE.ServicesModelsTests.HashtagEntityTest</td>
-<td><div><pre>java.lang.RuntimeException: Test not implemented
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.listOfHashtag(HashtagEntityTest.java:58)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1007878970", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1007878970'><pre>java.lang.RuntimeException: Test not implemented
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.listOfHashtag(HashtagEntityTest.java:58)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div></td>
-<td>0</td>
-<td>com.FCI.SWE.ServicesModelsTests.HashtagEntityTest@79d0569b</td></tr>
-<tr>
-<td title='com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.saveHashtag()'><b>saveHashtag</b><br>Test class: com.FCI.SWE.ServicesModelsTests.HashtagEntityTest</td>
+<td title='com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.Like()'><b>Like</b><br>Test class: com.FCI.SWE.ServicesModelsTests.LikePageEntityTest</td>
 <td><div><pre>java.lang.NullPointerException: No API environment is registered for this thread.
 	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppId(DatastoreApiHelper.java:117)
 	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppIdNamespace(DatastoreApiHelper.java:133)
 	at com.google.appengine.api.datastore.Query.&lt;init&gt;(Query.java:215)
 	at com.google.appengine.api.datastore.Query.&lt;init&gt;(Query.java:144)
-	at com.FCI.SWE.ServicesModels.HashtagEntity.saveHashtag(HashtagEntity.java:49)
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.saveHashtag(HashtagEntityTest.java:44)
+	at com.FCI.SWE.ServicesModels.LikePageEntity.Like(LikePageEntity.java:57)
+	at com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.Like(LikePageEntityTest.java:28)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -307,14 +107,14 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1243556846", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1243556846'><pre>java.lang.NullPointerException: No API environment is registered for this thread.
+</pre></div><a href='#' onClick='toggleBox("stack-trace199682144", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace199682144'><pre>java.lang.NullPointerException: No API environment is registered for this thread.
 	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppId(DatastoreApiHelper.java:117)
 	at com.google.appengine.api.datastore.DatastoreApiHelper.getCurrentAppIdNamespace(DatastoreApiHelper.java:133)
 	at com.google.appengine.api.datastore.Query.&lt;init&gt;(Query.java:215)
 	at com.google.appengine.api.datastore.Query.&lt;init&gt;(Query.java:144)
-	at com.FCI.SWE.ServicesModels.HashtagEntity.saveHashtag(HashtagEntity.java:49)
-	at com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.saveHashtag(HashtagEntityTest.java:44)
+	at com.FCI.SWE.ServicesModels.LikePageEntity.Like(LikePageEntity.java:57)
+	at com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.Like(LikePageEntityTest.java:28)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -341,7 +141,75 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
 <td>0</td>
-<td>com.FCI.SWE.ServicesModelsTests.HashtagEntityTest@79d0569b</td></tr>
+<td>com.FCI.SWE.ServicesModelsTests.LikePageEntityTest@2e4a4890</td></tr>
+<tr>
+<td title='com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.LikePage()'><b>LikePage</b><br>Test class: com.FCI.SWE.ServicesModelsTests.LikePageEntityTest</td>
+<td><div><pre>java.lang.AssertionError: expected [null] but found [Liked]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.LikePage(LikePageEntityTest.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:771)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1032)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div><a href='#' onClick='toggleBox("stack-trace796941275", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace796941275'><pre>java.lang.AssertionError: expected [null] but found [Liked]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.LikePage(LikePageEntityTest.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:771)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1032)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.FCI.SWE.ServicesModelsTests.LikePageEntityTest@2e4a4890</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -351,74 +219,20 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.success()'><b>success</b><br>Test class: com.FCI.SWE.ServicesModelsTests.HashtagEntityTest</td>
+<td title='com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.LikePageEntityStringString()'><b>LikePageEntityStringString</b><br>Test class: com.FCI.SWE.ServicesModelsTests.LikePageEntityTest</td>
 <td></td>
 <td>0</td>
-<td>com.FCI.SWE.ServicesModelsTests.HashtagEntityTest@79d0569b</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-skipped'>
-<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
+<td>com.FCI.SWE.ServicesModelsTests.LikePageEntityTest@2e4a4890</td></tr>
 <tr>
-<td title='com.FCI.SWE.ServicesModelsTests.HashtagEntityTest.UpdateHashtag()'><b>UpdateHashtag</b><br>Test class: com.FCI.SWE.ServicesModelsTests.HashtagEntityTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Method UpdateHashtag requires 1 parameters but 0 were supplied in the @Test annotation.
-	at org.testng.internal.Parameters.checkParameterTypes(Parameters.java:202)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:138)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:387)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:462)
-	at org.testng.internal.Invoker.handleParameters(Invoker.java:1300)
-	at org.testng.internal.Invoker.createParameters(Invoker.java:1015)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1104)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1335620736", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1335620736'><pre>org.testng.TestNGException: 
-Method UpdateHashtag requires 1 parameters but 0 were supplied in the @Test annotation.
-	at org.testng.internal.Parameters.checkParameterTypes(Parameters.java:202)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:138)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:387)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:462)
-	at org.testng.internal.Invoker.handleParameters(Invoker.java:1300)
-	at org.testng.internal.Invoker.createParameters(Invoker.java:1015)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1104)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:347)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:305)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:254)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div></td>
+<td title='com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.f()'><b>f</b><br>Test class: com.FCI.SWE.ServicesModelsTests.LikePageEntityTest<br>Parameters: 1, a</td>
+<td></td>
 <td>0</td>
-<td>com.FCI.SWE.ServicesModelsTests.HashtagEntityTest@79d0569b</td></tr>
+<td>com.FCI.SWE.ServicesModelsTests.LikePageEntityTest@2e4a4890</td></tr>
+<tr>
+<td title='com.FCI.SWE.ServicesModelsTests.LikePageEntityTest.f()'><b>f</b><br>Test class: com.FCI.SWE.ServicesModelsTests.LikePageEntityTest<br>Parameters: 2, b</td>
+<td></td>
+<td>0</td>
+<td>com.FCI.SWE.ServicesModelsTests.LikePageEntityTest@2e4a4890</td></tr>
 </table><p>
 </body>
 </html>

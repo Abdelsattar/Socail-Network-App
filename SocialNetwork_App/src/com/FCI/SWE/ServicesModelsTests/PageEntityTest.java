@@ -1,13 +1,18 @@
-package com.FCI.SWE.ServicesModels;
+package com.FCI.SWE.ServicesModelsTests;
 
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
+import com.FCI.SWE.ServicesModels.LikePageEntity;
 
+import com.FCI.SWE.ServicesModels.PageEntity;
+
+@Test
 public class PageEntityTest {
-	private static final String Assert = null;
+	
 	PageEntity P= new PageEntity();
 	
-  @Test(dataProvider = "dp")
   public void f(Integer n, String s) {
   }
 
@@ -18,64 +23,12 @@ public class PageEntityTest {
       new Object[] { 2, "b" },
     };
   }
-
-  @Test(expectedExceptions=ArithmeticException.class)
+  @Test
   public void CreatePage() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void PageEntityStringString() {
-		 boolean result = P.ageEntity("ArafFCI", "Mai");
-
-	  Assert.assertEquals(true, result);
-
-    //throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void PageEntity() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void PageEntityString() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getId() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getPage() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getPageString() {
-	  Assert.assertEquals(P.getPage(name));
-
-   // throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getUser() {
-	  Assert.assertEquals(P.getUser(json));
-
-    //throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getUserName() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void setId() {
-	  Assert.assertEquals(P.PageEntity(id));
-
-   // throw new RuntimeException("Test not implemented");
+	  P.PageName = "Barca";
+	  P.UserName = "Mido";
+	  boolean res=  P.CreatePage();
+	  Assert.assertEquals(true, res);
+	  
   }
 }

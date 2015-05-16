@@ -1,10 +1,13 @@
-package com.FCI.SWE.ServicesModels;
+package com.FCI.SWE.ServicesModelsTests;
 
+import com.FCI.SWE.ServicesModels.PagePostEntity;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
 public class PagePostEntityTest {
-	private static final String Assert = null;
+	
 	PagePostEntity PP= new PagePostEntity();
 	
   @Test(dataProvider = "dp")
@@ -20,52 +23,12 @@ public class PagePostEntityTest {
   }
 
   @Test
-  public void PagePostEntityStringString() {
-		 boolean result = PP.PagePostEntity("yadiElNela", "PostGamil");
-
-	  Assert.assertEquals(true, result);
-
-    //throw new RuntimeException("Test not implemented");
-  }
-
-  @Test(expectedExceptions=ArithmeticException.class)
-  public void PagePostEntity() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void PagePostEntityString() {
-		 boolean result = PP.PagePostEntity("PostGamil");
-
-	  Assert.assertEquals(true, result);
-
-    //throw new RuntimeException("Test not implemented");
-  }
-
-  @Test(expectedExceptions=ArithmeticException.class)
   public void WritePost() {
-    throw new RuntimeException("Test not implemented");
-  }
+	  PP.id = 300;
+	  PP.PageName = "Barca";
+	  PP.Postpage = "this will post to the page";
+	  boolean res= PP.WritePost();
+	  Assert.assertEquals(true, res);
+	  }
 
-  @Test
-  public void getId() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getPage() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void getPagePost() {
-    throw new RuntimeException("Test not implemented");
-  }
-
-  @Test
-  public void setId() {
-	  //Assert.assertEquals(PP.setId(id));
-
-    throw new RuntimeException("Test not implemented");
-  }
 }

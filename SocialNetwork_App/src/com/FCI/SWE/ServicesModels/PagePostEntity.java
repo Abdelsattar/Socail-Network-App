@@ -16,10 +16,10 @@ import com.google.appengine.api.datastore.Transaction;
 import java.util.ArrayList;
 
 public class PagePostEntity {
-	private String PageName;
-	private String Postpage;
+	public String PageName;
+	public String Postpage;
 	private static PageEntity currentActiveUser;
-	private long id;
+	public long id;
 	
 	public PagePostEntity(String PageName,  String Postpage) {
 		this.Postpage = Postpage;
@@ -32,13 +32,14 @@ public class PagePostEntity {
 		
 		this.PageName = PageName;
 	}
+	
 	public PagePostEntity(String Postpage) {
 		this.Postpage = Postpage;
 	
 	}
 
-	private void setId(long id) {
-		this.id = id;
+	private void setId(long ID) {
+		this.id = ID;
 	}
 
 	public long getId() {
@@ -48,8 +49,6 @@ public class PagePostEntity {
 	public String getPagePost() {
 		return Postpage;
 	}
-
-	
 
 	public String getPage() {
 		return PageName;
@@ -63,14 +62,10 @@ public class PagePostEntity {
 		PreparedQuery pq = datastore.prepare(gaeQuery);
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
 		System.out.println("Size = " + list.size());
-
 		try {
 			Entity employee = new Entity("PagePosts", list.size() + 2);
 			employee.setProperty("PageName", this.PageName);
 			employee.setProperty("Postpage", this.Postpage);
-			
-			
-
 			datastore.put(employee);
 			txn.commit();
 		} finally {
@@ -81,7 +76,5 @@ public class PagePostEntity {
 		return true;
 
 	}
-
-
 	
 }

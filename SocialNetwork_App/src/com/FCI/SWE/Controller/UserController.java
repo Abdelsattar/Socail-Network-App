@@ -37,7 +37,7 @@ import com.google.appengine.labs.repackaged.org.json.JSONException;
  * application
  * 
  * @author Mohammed Abd EL-Sattar Ahmed 
- * @version 4.0
+ * @version 4.2
  * @since 2014-02-12
  *
  */
@@ -47,58 +47,19 @@ public class UserController {
 	public static String username;
 	public String UserName=UserController.username;
 
-
-	/**
-	 * Action function to render Signup page, this function will be executed
-	 * using url like this /rest/signup
-	 * 
-	 * @return sign up page
+	/*
+	 *for signup new user  
 	 */
-	@POST
-	@Path("/doSearch")
-	public Response usersList(@FormParam("userName") String uname , @FormParam("friendName") String fname){
-		System.out.println(uname);
-		// lma badoos 3 l button li f l form li hya mawgoda f home.jsp haygi hna 
-		//ba3d kda haya5od l path da "http://localhost:8888/rest/search" w yro7 ynf7
-		//f l user service 
-		String serviceUrl = "http://localhost:8888/rest/search";
-		String urlParameters = "userName=" + uname + "&friendName=" + fname ;
-		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
-				"application/x-www-form-urlencoded;charset=UTF-8");
-		
-		return Response.ok(new Viewable("/jsp/search_result")).build();
-	}
 	@GET
 	@Path("/signup")
 	public Response signUp() {
 		return Response.ok(new Viewable("/jsp/register") ).build();
 	}
-	
-	@GET	
-	@Path("/CreatePage")
-	public Response CreatePage() {
-		//System.out.println("username "+username);
-
-		return Response.ok(new Viewable("/jsp/CreatePage") ).build();
-	}
-	
-	@GET	
-	@Path("/CreatePages")
-	public Response CreatePages() {
-		//System.out.println("username "+username);
-
-		return Response.ok(new Viewable("/jsp/CreatePages") ).build();
-	}
+	/*
+	 * for search for user
+	 */
 	@GET
-	@Path("/likepage")
-	public Response likepage() {
-		//System.out.println("username "+username);
-
-		return Response.ok(new Viewable("/jsp/likepage") ).build();
-	}
-		
-	@GET
-	@Path("/search")
+	@Path("/searchFriend")
 	public Response search(){
 		
 		return Response.ok(new Viewable("/jsp/search")).build();
@@ -127,7 +88,6 @@ public class UserController {
 		
 		return Response.ok(new Viewable("/jsp/login")).build();
 	}
-
 	/**
 	 * Action function to response to signup request, This function will act as
 	 * a controller part and it will calls RegistrationService to make
@@ -171,86 +131,8 @@ public class UserController {
 		 * user.saveUser(); return uname;
 		 */
 		return "Failed";
-	}
-	
-	@POST
-	@Path("/CreatePages")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String response(@FormParam("PageName") String PageName
-			) throws org.json.simple.parser.ParseException, JSONException, ParseException {
-
-		String serviceUrl = "http://localhost:8888//rest/CreateSuccesfully";
-		String urlParameters = "&PageName=" + PageName +"&UserName=" + UserName 
-				;
-		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
-				"application/x-www-form-urlencoded;charset=UTF-8");
-		JSONParser parser = new JSONParser();
-		Object obj;
-		// System.out.println(retJson);
-		obj = parser.parse(retJson);
-		JSONObject object = (JSONObject) obj;
-		Map<String, String> map = new HashMap<String, String>();
-		if (object.get("Status").equals("OK")){
-			
-			return "Created";
-	
-		}
-		return "Failed";
-		
-	}
-		
+	}		
 ///////////////////////////****************/////////////////
-	@POST
-	@Path("/Write")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String post(@FormParam("PageName") String PageName,
-			@FormParam("YourPost") String YourPost
-			) throws org.json.simple.parser.ParseException, JSONException, ParseException {
-
-		String serviceUrl = "http://localhost:8888//rest/PostSuccesfully";
-		String urlParameters = "&PageName=" + PageName +"&YourPost=" + YourPost 
-				;
-		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
-				"application/x-www-form-urlencoded;charset=UTF-8");
-		JSONParser parser = new JSONParser();
-		Object obj;
-		// System.out.println(retJson);
-		obj = parser.parse(retJson);
-		JSONObject object = (JSONObject) obj;
-		Map<String, String> map = new HashMap<String, String>();
-		if (object.get("Status").equals("OK")){			
-			return "Writed";
-	
-		}
-		return "Failed";
-		
-	}
-	
-	@POST
-	@Path("/Likepage")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String Like(@FormParam("PageName") String PageName
-			) throws org.json.simple.parser.ParseException, JSONException, ParseException {
-
-		String serviceUrl = "http://localhost:8888//rest/Liked";
-		String urlParameters = "PageName=" + PageName +"&UserName=" + UserName 
-				;
-		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
-				"application/x-www-form-urlencoded;charset=UTF-8");
-		JSONParser parser = new JSONParser();
-		Object obj;
-		// System.out.println(retJson);
-		obj = parser.parse(retJson);
-		JSONObject object = (JSONObject) obj;
-		Map<String, String> map = new HashMap<String, String>();
-		if (object.get("Status").equals("OK")){
-			
-			return "Liked";
-	
-		}
-		return "Failed";
-		
-	}
 	/**
 	 * Action function to response to login request. This function will act as a
 	 * controller part, it will calls login service to check user data and get
@@ -295,193 +177,7 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-
-		/*
-		 * UserEntity user = new UserEntity(uname, email, pass);
-		 * user.saveUser(); return uname;
-		 */
 		return null;
 
 	}
-	
-	/**
-	 * Action function to response to login request. This function will act as a
-	 * controller part, it will calls login service to check user data and get
-	 * user from datastore
-	 * 
-	 * @param 
-	 *            take user name and return whos send to him friend request 
-	 * @return  page view his pending friends
-	 */
-	
-	@POST
-	@Path("/TimeLine")
-	@Produces("text/html")
-	public Response timeLine() {
-		String retJson = Connection.connect(
-				"http://localhost:8888/rest/showTimeLine"
-				//"http://localhost:8888/rest/LoginService"
-				, "",
-				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
-		JSONParser parser = new JSONParser();
-		Object obj;
-		HashMap<String,ArrayList<User>>listof=new HashMap<String,ArrayList<User>>();
-		ArrayList<User>Posts=new ArrayList<User>();
-		try {
-			JSONArray arr=(JSONArray) parser.parse(retJson);
-			obj = parser.parse(retJson);
-			JSONObject object = (JSONObject) obj;
-			
-		for(int i=0;i<arr.size();i++){
-			
-			object=(JSONObject) arr.get(i);
-			Posts.add(User.parsInfo(object.toJSONString()));
-		
-		}
-		listof.put("Posts",Posts);
-			
-			
-			return Response.ok(new Viewable("/jsp/TimeLine", listof)).build();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-
-		/*
-		 * UserEntity user = new UserEntity(uname, email, pass);
-		 * user.saveUser(); return uname;
-		 */
-		return null;
-
-	}
-	/**
-	 * Action function to response to accept friend request
-	 * user from datastore
-	 * 
-	 * @param user 
-	 *            take user name and return whos send to him friend request 
-	 * @return  page view his pending friends
-	 */
-
-	//
-	/*@POST
-	@Path("/addfriend")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String addFriend(@FormParam("friendName") String FName, @FormParam("userName") String UName) {
-
-		String serviceUrl = "http://localhost:8888/rest/addfriend";
-		String urlParameters = "friendName=" + FName + "&userName=" + UName;
-		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
-				"application/x-www-form-urlencoded;charset=UTF-8");
-		JSONParser parser = new JSONParser();
-		Object obj;
-		try {
-			// System.out.println(retJson);
-			obj = parser.parse(retJson);
-			JSONObject object = (JSONObject) obj;
-			if (object.get("Status").equals("Accpted"))
-				return FName+" is now friend with u";
-
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return "Failed";
-	}*/
-	
-	/**
-	 * Action function to response to 
-	 * send message to friends 
-	 * user from datastore
-	 * 
-	 * @param sender
-	 *            provided user name
-	 * @param reciver
-	 *            provided user will recive message
-	 *  @param text
-	 *            user message          
-	 * @return page
-	 */
-	
-	@POST
-	@Path("/sendMessgae")
-	@Produces("text/html")
-	public String sendFriendRequest(@FormParam("sender") String sender,
-			@FormParam("receiver") String receiver,@FormParam("text") String text) {
- 
-		String serviceUrl = "http://localhost:8888/rest/sending";
-		String urlParameters = "sender=" + sender + "&receiver=" +receiver + "&text=" +text;
-		String retJson = Connection.connect( serviceUrl, urlParameters, "POST",
-				"application/x-www-form-urlencoded;charset=UTF-8");
-		try {
- 
-			JSONParser parser = new JSONParser();
-			Object obj = parser.parse(retJson);
-			JSONObject object = (JSONObject) obj; 
-			if (object.get("Status").equals("OK"))
-				return "Message Sent Successfully";
-			else  
-				return "User not found";
- 
- 
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return null;
- 
-	}
-	
-	@POST
-	@Path("/showURFR")
-	@Produces("text/html")
-	public Response show() {
-		String retJson = Connection.connect(
-				"http://localhost:8888/rest/showfriends"
-				//"http://localhost:8888/rest/LoginService"
-				, "",
-				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
-		JSONParser parser = new JSONParser();
-		Object obj;
-		HashMap<String,ArrayList<User>>listof=new HashMap<String,ArrayList<User>>();
-		ArrayList<User>users=new ArrayList<User>();
-		try {
-			JSONArray arr=(JSONArray) parser.parse(retJson);
-			obj = parser.parse(retJson);
-			JSONObject object = (JSONObject) obj;
-			
-		for(int i=0;i<arr.size();i++){
-			
-			object=(JSONObject) arr.get(i);
-			users.add(User.parsInfo(object.toJSONString()));
-		
-		}
-		listof.put("usersList",users);
-			
-			
-			return Response.ok(new Viewable("/jsp/UrRe", listof)).build();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-
-		/*
-		 * UserEntity user = new UserEntity(uname, email, pass);
-		 * user.saveUser(); return uname;
-		 */
-		return null;
-
-	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

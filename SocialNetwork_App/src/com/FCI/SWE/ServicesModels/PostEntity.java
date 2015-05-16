@@ -60,6 +60,7 @@ public class PostEntity {
 		this.Feeling=Feeling;
 	}
 	
+	
 	public Boolean savePost() {
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -111,8 +112,7 @@ public class PostEntity {
 
 		return null;
 	}
-	
-	
+		
 	public static Boolean postView(String name, String post) {
 
 		DatastoreService datastore = DatastoreServiceFactory

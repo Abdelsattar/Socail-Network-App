@@ -52,12 +52,9 @@ public class UserServices {
 	 * Registration Rest service, this service will be called to make
 	 * registration. This function will store user data in data store
 	 * 
-	 * @param uname
-	 *            provided user name
-	 * @param email
-	 *            provided user email
-	 * @param pass
-	 *            provided password
+	 * @param uname    provided user name
+	 * @param email    provided user email
+	 * @param pass    provided password
 	 * @return Status json
 	 */
 	@POST
@@ -142,54 +139,14 @@ public class UserServices {
 		return object.toString();
 		
 	}
-	/*
-	 * @param fname Friend name 
-	 * @param uname User name
-	 * his function to accept friend request take it param from controller 
-	 */
-	@POST
-	@Path("/addfriend")
-	public String Accept( @FormParam("friendName") String fname , @FormParam("userName") String uname){
-		JSONObject object=new JSONObject();
-		UserEntity user=new UserEntity();
-		user.get(fname);
-		if(user==null){
-			object.put("Status", "Request declined");
-		}
-		else
-		{
-			object.put("Status", "Accpted ");
-		//	UserEntity.addFriend(uname, fname);
-		}
-		return object.toString();
-		
-	}
+	
 	/*
 	 * @param sender send message
 	 * @param reciver who recive message 
 	 * @param text message containt
 	 * 
 	 */
-	@POST
-	@Path("/sending")
-	public String sendMessageService(@FormParam("sender") String sender,
-			@FormParam("receiver") String receiver,@FormParam("text") String text) {
-		JSONObject object = new JSONObject();
- 
-		/*to check the reciver is exist */
-		UserEntity user = UserEntity.getUserByMail(receiver); 
-		if(user == null ){
-			object.put("Status", "Not Found");  
-			return object.toString();
-		}	 
-		else{ 
-			    MessagEntity msg = new MessagEntity(sender,receiver,text);
-				object.put("Status", "OK");  
-				msg.saveMsg();
-		}
- 
-		return object.toString();
-	}
+
 	@POST
 	@Path("//showTimeLine")
 	public String showtimeline(@FormParam("user_ID") int ID){
@@ -207,6 +164,11 @@ public class UserServices {
 
 	}
 	
+	/**
+	 * 
+	 * @param Page
+	 * @return
+	 */
 	@POST
 	@Path("/Liked")
 	public String LikePage(@FormParam("PageName") String Page
@@ -221,6 +183,12 @@ public class UserServices {
 	
 	
 	public String r=UserController.username; 
+	/**
+	 * 
+	 * @param PageName
+	 * @return
+	 * @throws JSONException
+	 */
 	@POST
 	@Path("/CreateSuccesfully")
 	public String messageService(@FormParam("PageName") String PageName
@@ -233,6 +201,13 @@ public class UserServices {
 		return object.toString();
 		
 	}
+	/***
+	 * 
+	 * @param PageName
+	 * @param PostPage
+	 * @return
+	 * @throws JSONException
+	 */
 	@POST
 	@Path("/PostSuccesfully")
 	public String Post(@FormParam("PageName") String PageName,

@@ -3,15 +3,12 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.FCI.SWE.ServicesModelsTests.HashtagEntityTest">
+      <class name="com.FCI.SWE.ServicesModelsTests.LikePageEntityTest">
         <methods>
-          <include name="listOfHashtag"/>
-          <include name="UpdateHashtag"/>
-          <include name="saveHashtag"/>
-          <include name="fail"/>
-          <include name="HashtagView"/>
+          <include name="LikePage"/>
+          <include name="Like"/>
         </methods>
-      </class> <!-- com.FCI.SWE.ServicesModelsTests.HashtagEntityTest -->
+      </class> <!-- com.FCI.SWE.ServicesModelsTests.LikePageEntityTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

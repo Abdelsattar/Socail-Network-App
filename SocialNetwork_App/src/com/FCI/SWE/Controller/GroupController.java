@@ -18,6 +18,10 @@ import com.FCI.SWE.Models.User;
 @Produces("text/html")
 public class GroupController {
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/group")
 	public Response group() {
@@ -28,6 +32,13 @@ public class GroupController {
 		return Response.ok(new Viewable("/jsp/GroupViews/createGroup")).build();
 	}
 
+	/**
+	 * 
+	 * @param name
+	 * @param desc
+	 * @param privacy
+	 * @return
+	 */
 	@POST
 	@Path("/CreateGroup")
 	public String createGroup(@FormParam("name") String name,

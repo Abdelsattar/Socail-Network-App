@@ -1,14 +1,19 @@
-package com.FCI.SWE.ServicesModels;
+package com.FCI.SWE.ServicesModelsTests;
 
-import junit.framework.Assert;
 
+import java.util.ArrayList;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
-
 import com.FCI.SWE.ServicesModels.PostEntity;
+import com.FCI.SWE.ServicesModels.UserEntity;
 
 public class PostEntityTest {
+	
 	//private static final String Assert = null;
+	public	ArrayList<UserEntity> Arr;
+	public	ArrayList<UserEntity> Res;
 	PostEntity PE= new PostEntity();
 	
   @Test(dataProvider = "dp")
@@ -29,6 +34,18 @@ public class PostEntityTest {
 	  Assert.assertEquals(true, result);
 
     throw new RuntimeException("Test not implemented");
+  }
+
+  
+  @Test
+  public void savePost() {
+	  PE.setFeeling("LOL");
+	  PE.setPost("Here the first Post" );
+	  PE.setPost_ID(28);
+	  PE.setPrivacy("Private");
+	  PE.setUser_ID(500);
+	  boolean res= PE.savePost();
+	  Assert.assertEquals(true, res);
   }
 
   @Test
@@ -58,25 +75,19 @@ public class PostEntityTest {
 
   @Test
   public void listOfPosts() {
-		 boolean result = PE.listOfPosts("18");
-		 Assert.assertEquals(true, result);
+		 Res= PE.listOfPosts(28);
+		 Assert.assertEquals(Arr, Res);
 
     //throw new RuntimeException("Test not implemented");
   }
 
   @Test
   public void postView() {
-		 boolean result = PE.postView("Mai", "Mmmmm");
+		 boolean result = PostEntity.postView("Mai", "Mmmmm");
 		 Assert.assertEquals(true, result);
-
     //throw new RuntimeException("Test not implemented");
-  }
-
-  @Test(expectedExceptions=ArithmeticException.class)
-  public void savePost() {
-    throw new RuntimeException("Test not implemented");
-  }
-
+  }  
+  /*
   @Test
   public void setFeeling() {
 	  //Assert.assertEquals(PE.setFeeling(Feeling));
@@ -111,4 +122,5 @@ public class PostEntityTest {
 
     throw new RuntimeException("Test not implemented");
   }
+  */
 }

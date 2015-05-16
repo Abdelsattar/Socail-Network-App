@@ -1,13 +1,12 @@
 package com.FCI.SWE.ServicesModelsTests;
 
-import junit.framework.Assert;
 
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-
-import com.FCI.SWE.Models.User;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import com.FCI.SWE.ServicesModels.UserEntity;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;

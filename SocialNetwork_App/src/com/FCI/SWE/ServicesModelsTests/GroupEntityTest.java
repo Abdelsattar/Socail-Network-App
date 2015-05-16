@@ -2,8 +2,8 @@ package com.FCI.SWE.ServicesModelsTests;
 
 import javax.swing.GroupLayout.Group;
 
-import junit.framework.Assert;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.FCI.SWE.ServicesModels.GroupEntity;

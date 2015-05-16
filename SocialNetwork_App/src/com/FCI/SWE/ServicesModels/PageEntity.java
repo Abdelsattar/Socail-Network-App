@@ -17,8 +17,8 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 
 public class PageEntity {
-	private String UserName;
-	private String PageName;
+	public String UserName;
+	public String PageName;
 	private static PageEntity currentActiveUser;
 	private long id;
 	
@@ -49,9 +49,7 @@ public class PageEntity {
 	public String getUserName() {
 		return UserName;
 	}
-
 	
-
 	public String getPage() {
 		return PageName;
 	}
